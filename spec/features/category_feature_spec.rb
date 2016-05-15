@@ -33,7 +33,7 @@ describe 'Feature Test: Category', :type => :feature do
 
       it 'does display "Add To Cart" button' do
         visit category_path(@category)
-        expect(page).to have_selector("input[type=submit][value='Add to Cart']")
+        expect(page).to have_selector("input[type=submit][value='Add To Cart']")
       end
     end
   end
