@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
     @user ||= User.find_by(id: session[:user_id])
   end
 
-  def logged_in?
-    !current_user.nil?
+  def require_login
+    redirect_to store_path if current_user.nil?
   end
 
 end

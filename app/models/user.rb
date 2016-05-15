@@ -7,10 +7,10 @@ class User < ActiveRecord::Base
 
   def current_cart=(cart)
 
-    self.carts << cart
+    @current_cart = cart
   end
 
   def current_cart
-    self.carts.last
+    @current_cart
   end
 end
