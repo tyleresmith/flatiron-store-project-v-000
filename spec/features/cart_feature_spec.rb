@@ -74,7 +74,7 @@ describe 'Feature Test: Cart', :type => :feature do
       end
 
       it "Does show Cart link when there is a current cart" do
-        @user.current_cart = @user.carts.create(status: "submitted")
+        @user.carts.create(status: "pending")
         first_item = Item.first
         first_item.line_items.create(quantity: 1, cart: @user.current_cart)
         @user.save

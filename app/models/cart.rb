@@ -5,8 +5,8 @@ class Cart < ActiveRecord::Base
 
   def total
     total = 0
-    self.items.each do |item|
-      total += item.price
+    self.line_items.each do |line_item|
+      total += line_item.item.price * line_item.quantity
     end
     total
   end
@@ -29,9 +29,8 @@ class Cart < ActiveRecord::Base
       line_item.item.inventory -= line_item.quantity
       line_item.item.save
     end
-    self.line_items.destroy_all
-    self.user.current_cart = nil
-    self.user.save
+    self.status = "submitted"
+    self.save
   end
 
 
